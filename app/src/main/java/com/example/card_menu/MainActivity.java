@@ -82,6 +82,30 @@ public class MainActivity extends AppCompatActivity {
                 "5",
                 "0"));
 
+        //book 6
+        listItems.add(new RecyclerItem(
+                "Book 6",
+                "JESUS – Teacher & Healer",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_6", "drawable", c.getPackageName())),
+                "6",
+                "0"));
+
+        //book 7
+        listItems.add(new RecyclerItem(
+                "Book 7",
+                "JESUS – Lord & Saviour",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_7", "drawable", c.getPackageName())),
+                "7",
+                "0"));
+
+        //book 8
+        listItems.add(new RecyclerItem(
+                "Book 8",
+                "Acts of the HOLY SPIRIT",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_8", "drawable", c.getPackageName())),
+                "8",
+                "0"));
+
         //set adapter
         adapter = new BookAdapter(listItems, this);
         recyclerView.setAdapter(adapter);

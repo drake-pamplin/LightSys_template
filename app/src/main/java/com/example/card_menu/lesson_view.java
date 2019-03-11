@@ -19,7 +19,7 @@ public class lesson_view extends AppCompatActivity {
     private List<RecyclerItem> listItems;
 
     private String[][] title = {
-            {
+            { //book 1
                 "How Everything Began",
                 "Everything Man Needed",
                 "Sin Begins",
@@ -45,7 +45,7 @@ public class lesson_view extends AppCompatActivity {
                 "Jesus Died for Us",
                 "Thomas Meets the Risen Jesus"
             },
-            {
+            { //book 2
                 "Jacob the Deceiver",
                 "Jacob's Dream",
                 "Jacob and Laban",
@@ -71,7 +71,7 @@ public class lesson_view extends AppCompatActivity {
                 "Jesus Died for Us",
                 "Jesus is Alive Today"
             },
-            {
+            { //book 3
                 "Joshua Fights the Amalekites",
                 "Twelve Israelites Visit the Promised Land",
                 "Israel Crosses the Jordan into the PRomised Land",
@@ -97,7 +97,7 @@ public class lesson_view extends AppCompatActivity {
                 "Jesus is Alive after Death",
                 "A Soldier for God"
             },
-            {
+            { //book 4
                 "A Family Flees from Famine",
                 "Naomi and Ruth Return to Israel",
                 "Ruth in the Harvest Field",
@@ -123,7 +123,7 @@ public class lesson_view extends AppCompatActivity {
                 "Elijah Goes to Heaven",
                 "Jesus Appears with Moses and Elijah"
             },
-            {
+            { //book 5
                 "Naaman Visits Elisha's House",
                 "Naaman is Healed",
                 "Elisha and the Army of God",
@@ -148,6 +148,84 @@ public class lesson_view extends AppCompatActivity {
                 "Ezra Reads the Law",
                 "Jesus on the Cross",
                 "Jesus Shows the Way to Everlasting Life"
+            },
+            { //book 6
+                "Jesus our Teacher",
+                "The Two Houses",
+                "A Light Should Be Seen",
+                "Revenge",
+                "Praying To God",
+                "Evil In God's World",
+                "Children of God",
+                "The Lost Sheep",
+                "Forgiving Others",
+                "God's Reward",
+                "Be Prepared",
+                "Waiting for Jesus",
+                "Jesus is Baptised",
+                "Jesus Calls Helpers (Disciples)",
+                "A Man is Made Clean",
+                "A Paralysed Man Walks",
+                "A Withered Hand and Hard Hearts",
+                "Jesus Calms the Storm",
+                "A Woman is Healed",
+                "A Dead Child Lives",
+                "The Faith of a Foreigner",
+                "A Deaf and Dumb Man Hears and Speaks",
+                "Jesus Makes The Blind To See",
+                "Jesus' Power Over Satan"
+            },
+            { //book 7
+                "The Birth of Jesus",
+                "Jesus Turns Water into Wine",
+                "Jesus Speaks to Nicodemus",
+                "A Ruler Kneels Before Jesus",
+                "The Sick Man at the Pool",
+                "Jesus Feeds Five Thousand People",
+                "Jesus Walks on the Water",
+                "Jesus Heals a Blind Man",
+                "Jesus Calls Lazarus from Death",
+                "Jesus Dies on the Cross",
+                "Mary and Jesus at the Tomb",
+                "Jesus Appears to His Friends",
+                "Jesus Teaches Two Friends",
+                "The Son Among the Pigs",
+                "The Lost Son Comes Home",
+                "The Wealth of a Rich Man",
+                "The Beggar and the Rich Man",
+                "The Friend at the Door",
+                "Two Men in God's House",
+                "A Man Sows his Seed",
+                "The Seed Grows",
+                "Help for an Injured Man",
+                "The House Owner Comes Home",
+                "The Man Up a Tree"
+            },
+            { //book 8
+                "The Lord Jesus Returns to Heaven",
+                "The Coming of the Holy Spirit",
+                "Peter Begins to Preach",
+                "The First Church",
+                "Power to Heal",
+                "Giving to God",
+                "Stephen, Faithful unto Death",
+                "The Good News Spreads to Sudan",
+                "Peter's Vision",
+                "Peter Visits the House of Cornelius",
+                "Peter in Prison",
+                "Power Through Prayer",
+                "Paul is Changed",
+                "Ananias Visits Paul",
+                "The Church Sends Missionaries",
+                "The Missionary Message",
+                "God Guides Paul",
+                "Paul and Silas in Trouble at Philippi",
+                "Paul and the Unknown God",
+                "Conflicts at Corinth",
+                "Paul Faces Death",
+                "A Message for Kings",
+                "With God in Danger",
+                "Paul in Rome"
             }
     };
 
