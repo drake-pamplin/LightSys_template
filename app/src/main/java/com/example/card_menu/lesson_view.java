@@ -19,30 +19,7 @@ public class lesson_view extends AppCompatActivity {
     private List<RecyclerItem> listItems;
 
     private String[] title = {
-            "The Birth of Jesus",
-            "Jesus Turns Water into Wine",
-            "Jesus Speaks to Nicodemus",
-            "A Ruler Kneels Before Jesus",
-            "The Sick Man at the Pool",
-            "Jesus Feeds Five Thousand People",
-            "Jesus Walks on the Water",
-            "Jesus Heals a Blind Man",
-            "Jesus Calls Lazarus from Death",
-            "Jesus Dies on the Cross",
-            "Mary and Jesus at the Tomb",
-            "Jesus Appears to His Friends",
-            "Jesus Teaches Two Friends",
-            "The Son Among the Pigs",
-            "The Lost Son Comes Home",
-            "The Wealth of a Rich Man",
-            "The Beggar and the Rich Man",
-            "The Friend at the Door",
-            "Two Men in God's House",
-            "A Man Sows his Seed",
-            "The Seed Grows",
-            "Help for an Injured Man",
-            "The House Owner Comes Home",
-            "The Man Up a Tree"
+
     };
 
     private String[] title_book7 = {
