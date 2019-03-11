@@ -29,12 +29,12 @@
         </activity>
 
         <activity android:name=".pdf_view"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".lesson_view">
 
             <!-- the meta-tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".lesson_view" />
         </activity>
 
     </application>

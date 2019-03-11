@@ -42,11 +42,44 @@ public class MainActivity extends AppCompatActivity {
           * Lesson number is not used in the book view, set it to "0"
         */
 
+        //book 1
         listItems.add(new RecyclerItem(
                 "Book 1",
                 "Beginning with GOD",
                  c.getResources().getDrawable(c.getResources().getIdentifier("book_1", "drawable", c.getPackageName())),
                 "1",
+                "0"));
+
+        //book 2
+        listItems.add(new RecyclerItem(
+                "Book 2",
+                "Mighty Men GOD",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_2", "drawable", c.getPackageName())),
+                "2",
+                "0"));
+
+        //book 3
+        listItems.add(new RecyclerItem(
+                "Book 3",
+                "Victory through GOD",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_3", "drawable", c.getPackageName())),
+                "3",
+                "0"));
+
+        //book 4
+        listItems.add(new RecyclerItem(
+                "Book 4",
+                "Servants of GOD",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_4", "drawable", c.getPackageName())),
+                "4",
+                "0"));
+
+        //book 5
+        listItems.add(new RecyclerItem(
+                "Book 5",
+                "On Trial For GOD",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_5", "drawable", c.getPackageName())),
+                "5",
                 "0"));
 
         //set adapter

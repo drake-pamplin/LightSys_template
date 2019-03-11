@@ -22,8 +22,6 @@ public class pdf_view extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Book " + book + " Lesson " + lesson);
 
-        Toast.makeText(getApplicationContext(), "book " + book + ", lesson " + lesson, Toast.LENGTH_LONG).show();
-
         pdfView = findViewById(R.id.pdfView);
         pdfView.fromAsset("book_" + book + ".pdf")
                 .pages(Integer.parseInt(lesson) + 3)

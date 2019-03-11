@@ -75,7 +75,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Clicked on book " + itemList.getBook(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(mContext, "Clicked on book " + itemList.getBook(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, lesson_view.class);
                 intent.putExtra(EXTRA_BOOK, itemList.getBook());
                 mContext.startActivity(intent);
