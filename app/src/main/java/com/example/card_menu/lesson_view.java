@@ -19,8 +19,31 @@ public class lesson_view extends AppCompatActivity {
     private List<RecyclerItem> listItems;
 
     private String[] title = {
-            "Adam and the Animals",
-            "A Wife for Adam"
+            "How Everything Began",
+            "Everything Man Needed",
+            "Sin Begins",
+            "The Results of Sin",
+            "Noah, a Righteous Man",
+            "The Flood",
+            "The Rainbow - God's Promise",
+            "The Tower of Babel",
+            "Righteous Job",
+            "A Time of Great Trouble",
+            "Job Suffers",
+            "Job is Restored",
+            "Abraham Obeys God",
+            "Lot's Choice",
+            "Abraham Rescues Lot",
+            "God's Promise to Abraham",
+            "Ishmael is Born",
+            "God's Promise Renewed",
+            "Abraham Prays for Sodom",
+            "God Tests Abraham",
+            "A Wife for Isaac",
+            "God Sends His Promised Son",
+            "Jesus Died for Us",
+            "Thomas Meets the Risen Jesus"
+
     };
 
     @Override
@@ -50,7 +73,7 @@ public class lesson_view extends AppCompatActivity {
          * Lesson number ( let current code handle this )
         */
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 24; i++) {
             listItems.add(new RecyclerItem(
                     "Lesson " + (i + 1),
                     title[i],
