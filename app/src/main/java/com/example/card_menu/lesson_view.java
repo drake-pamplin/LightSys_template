@@ -19,9 +19,32 @@ public class lesson_view extends AppCompatActivity {
     private List<RecyclerItem> listItems;
 
     private String[] title = {
-            "Adam and the Animals",
-            "A Wife for Adam"
-    };
+            "Jesus our Teacher",
+            "The Two Houses",
+            "A Light Should Be Seen",
+            "Revenge",
+            "Praying To God",
+            "Evil In God's World",
+            "Children of God",
+            "The Lost Sheep",
+            "Forgiving Others",
+            "God's Reward",
+            "Be Prepared",
+            "Waiting for Jesus",
+            "Jesus is Baptised",
+            "Jesus Calls Helpers (Disciples)",
+            "A Man is Made Clean",
+            "A Paralysed Man Walks",
+            "A Withered Hand and Hard Hearts",
+            "Jesus Calms the Storm",
+            "A Woman is Healed",
+            "A Dead Child Lives",
+            "The Faith of a Foreigner",
+            "A Deaf and Dumb Man Hears and Speaks",
+            "Jesus Makes The Blind To See",
+            "Jesus' Power Over Satan"
+
+};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +73,7 @@ public class lesson_view extends AppCompatActivity {
          * Lesson number ( let current code handle this )
         */
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 24; i++) {
             listItems.add(new RecyclerItem(
                     "Lesson " + (i + 1),
                     title[i],

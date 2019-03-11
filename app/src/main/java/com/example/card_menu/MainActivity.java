@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         */
 
         listItems.add(new RecyclerItem(
-                "Book 1",
-                "Beginning with GOD",
-                 c.getResources().getDrawable(c.getResources().getIdentifier("book_1", "drawable", c.getPackageName())),
-                "1",
+                "Book 6",
+                "JESUS – Teacher & Healer",
+                 c.getResources().getDrawable(c.getResources().getIdentifier("book_6", "drawable", c.getPackageName())),
+                "6",
                 "0"));
 
         //set adapter
