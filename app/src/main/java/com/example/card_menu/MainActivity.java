@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
+    /*
     //create overflow menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -143,4 +144,5 @@ public class MainActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    */
 }
