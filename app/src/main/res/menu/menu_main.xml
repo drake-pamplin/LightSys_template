@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--
+    -Right-click "res"
+    -New -> Android Resource Directory
+    -Pick "menu"
+    -Right-click "menu"
+    -New -> Android Resource File
+    -name it with "menu" in name
+    -->
+
+    <!-- "About" brings up the "about" page, always be in the overflow -->
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        app:showAsAction="never" />
+
+    <!-- "Instructions" brings up the "instructions" page, always be in the overflow -->
+    <item
+        android:id="@+id/action_instructions"
+        android:title="@string/action_instructions"
+        app:showAsAction="never" />
+
+</menu>

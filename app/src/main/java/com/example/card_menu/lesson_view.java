@@ -3,10 +3,12 @@ package com.example.card_menu;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.res.ResourcesCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -233,6 +235,14 @@ public class lesson_view extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lesson_view);
+
+        //create toolbar
+        Toolbar my_toolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(my_toolbar);
+
+        //add upwards navigation
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);

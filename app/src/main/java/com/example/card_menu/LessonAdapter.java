@@ -44,35 +44,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         viewHolder.txtTitle.setText(itemList.getTitle());
         viewHolder.txtDescription.setText(itemList.getDescription());
         viewHolder.imgDisplay.setImageDrawable(itemList.getImage());
-        viewHolder.txtOptionDigit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //display option menu
-                PopupMenu popupMenu = new PopupMenu(mContext, viewHolder.txtOptionDigit);
-                popupMenu.inflate(R.menu.option_menu);
-                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-
-                        switch (item.getItemId()) {
-                            case R.id.menu_item_save:
-                                Toast.makeText(mContext, "Saved", Toast.LENGTH_LONG).show();
-                                break;
-                            case R.id.menu_item_delete:
-                                //delete item
-                                listItems.remove(x);
-                                notifyDataSetChanged();
-                                Toast.makeText(mContext, "Deleted", Toast.LENGTH_LONG).show();
-                                break;
-                            default:
-                                break;
-                        }
-                        return false;
-                    }
-                });
-                popupMenu.show();
-            }
-        });
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,7 +65,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         public TextView txtTitle;
         public TextView txtDescription;
-        public TextView txtOptionDigit;
         public ImageView imgDisplay;
         public RelativeLayout parentLayout;
 
@@ -103,7 +73,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
             txtTitle = itemView.findViewById(R.id.txtTitle);
             txtDescription = itemView.findViewById(R.id.txtDescription);
-            txtOptionDigit = itemView.findViewById(R.id.txtOptionDigit);
             imgDisplay = itemView.findViewById(R.id.imgDisplay);
             parentLayout = itemView.findViewById(R.id.relative_layout);
         }
