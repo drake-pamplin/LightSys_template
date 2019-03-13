@@ -32,7 +32,7 @@ public class info_view extends AppCompatActivity {
 
         pdfView = findViewById(R.id.pdfView);
 
-        if (item == "About") {
+        if (item.equals("About")) {
             pdfView.fromAsset("about.pdf")
                     //.pages(Integer.parseInt(lesson) + 3)
                     .load();
