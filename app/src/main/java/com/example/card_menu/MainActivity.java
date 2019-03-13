@@ -1,6 +1,7 @@
 package com.example.card_menu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private BookAdapter adapter;
     private List<RecyclerItem> listItems;
     //private String test = "location_bg";
+
+    public static final String EXTRA_ITEM = "com.example.card_menu.ITEM";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,13 +131,20 @@ public class MainActivity extends AppCompatActivity {
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Context mContext = getApplicationContext();
+        Intent intent = new Intent(mContext, info_view.class);
+
         switch (item.getItemId()) {
             case R.id.action_about:
-                //user chose the "Settings" item, show the app settings UI
+                //user chose the "about" item, open the about view
+                intent.putExtra(EXTRA_ITEM, "About");
+                mContext.startActivity(intent);
                 return true;
 
             case R.id.action_instructions:
-                //user chose the "Favorite" action, mark the current item as a favorite
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_ITEM, "Instructions");
+                mContext.startActivity(intent);
                 return true;
 
             default:

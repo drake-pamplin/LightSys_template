@@ -17,7 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".lesson_view"
             android:parentActivityName=".MainActivity">
@@ -27,8 +26,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <activity android:name=".pdf_view"
+        <activity
+            android:name=".pdf_view"
             android:parentActivityName=".MainActivity">
 
             <!-- the meta-tag is required if you support API level 15 and lower -->
@@ -37,6 +36,15 @@
                 android:value=".MainActivity" />
         </activity>
 
+        <activity
+            android:name=".info_view"
+            android:parentActivityName=".MainActivity">
+
+            <!-- the meta-tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
     </application>
 
 </manifest>
