@@ -131,20 +131,19 @@ public class MainActivity extends AppCompatActivity {
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Context mContext = getApplicationContext();
-        Intent intent = new Intent(mContext, info_view.class);
+        Intent intent = new Intent(this, info_view.class);
 
         switch (item.getItemId()) {
             case R.id.action_about:
                 //user chose the "about" item, open the about view
                 intent.putExtra(EXTRA_ITEM, "About");
-                mContext.startActivity(intent);
+                this.startActivity(intent);
                 return true;
 
             case R.id.action_instructions:
                 //user chose the "instructions" item, open instructions view
                 intent.putExtra(EXTRA_ITEM, "Instructions");
-                mContext.startActivity(intent);
+                this.startActivity(intent);
                 return true;
 
             default:
