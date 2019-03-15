@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
-public class info_view extends AppCompatActivity {
+public class InfoView extends AppCompatActivity {
 
     PDFView pdfView;
 
@@ -35,11 +36,23 @@ public class info_view extends AppCompatActivity {
         if (item.equals("About")) {
             pdfView.fromAsset("about.pdf")
                     //.pages(Integer.parseInt(lesson) + 3)
+                    .onRender(new OnRenderListener() {
+                        @Override
+                        public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
+                            pdfView.fitToWidth();
+                        }
+                    })
                     .load();
         }
         else { //Instructions
             pdfView.fromAsset("instruction.pdf")
                     //.pages(Integer.parseInt(lesson) + 3)
+                    .onRender(new OnRenderListener() {
+                        @Override
+                        public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
+                            pdfView.fitToWidth();
+                        }
+                    })
                     .load();
         }
     }

@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 
 import java.io.IOException;
 
-public class image_viewer extends AppCompatActivity {
+public class ImageViewer extends AppCompatActivity {
 
     ImageView imgDisplay;
 
@@ -189,6 +189,50 @@ public class image_viewer extends AppCompatActivity {
             go = true;
             mediaPlayer.release();
             play();
+        }
+    }
+
+    int location = 0;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mediaPlayer.pause();
+        location = mediaPlayer.getCurrentPosition();
+        outState.putInt("spot", location);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        location = savedInstanceState.getInt("spot");
+
+        if (location > 0) {
+            enter = false;
+            go = true;
+            mediaPlayer = new MediaPlayer();
+            try {
+                mediaPlayer.setDataSource(link);
+
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.seekTo(location);
+                        mp.start();
+                    }
+                });
+                mediaPlayer.prepareAsync();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mediaPlayer.release(); // finish current activity
+                    enter = true;
+                    go = false;
+                }
+            });
         }
     }
 }

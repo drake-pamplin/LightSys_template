@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;

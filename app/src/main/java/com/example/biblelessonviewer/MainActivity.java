@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -45,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
         /* INPUT YOUR CODE BELOW
          * List items need the following:
-          * "Book ( BOOK NUMBER )"
-          * Description ( pulled from website )
-          * Image name ( Download from website, follow naming convention!!! -> "book_<NUMBER>" )
-          * Book number ( in string format -> "x" )
-          * Lesson number is not used in the book view, set it to "0"
-        */
+         * "Book ( BOOK NUMBER )"
+         * Description ( pulled from website )
+         * Image name ( Download from website, follow naming convention!!! -> "book_<NUMBER>" )
+         * Book number ( in string format -> "x" )
+         * Lesson number is not used in the book view, set it to "0"
+         */
 
         //book 0
         listItems.add(new RecyclerItem(
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         listItems.add(new RecyclerItem(
                 "Book 1",
                 "Beginning with GOD",
-                 c.getResources().getDrawable(c.getResources().getIdentifier("book_1", "drawable", c.getPackageName())),
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_1", "drawable", c.getPackageName())),
                 "1",
                 null,
                 null));
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = new Intent(this, info_view.class);
+        Intent intent = new Intent(this, InfoView.class);
 
         switch (item.getItemId()) {
             case R.id.action_about:

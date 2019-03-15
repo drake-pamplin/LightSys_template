@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 import java.util.List;
 
-public class image_list extends AppCompatActivity {
+public class ImageList extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ImageAdapter adapter;
@@ -32,8 +32,8 @@ public class image_list extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        String book = intent.getStringExtra(pdf_view.EXTRA_BOOK);
-        String[] photos = intent.getStringArrayExtra(pdf_view.EXTRA_PHOTOS);
+        String book = intent.getStringExtra(PdfView.EXTRA_BOOK);
+        String[] photos = intent.getStringArrayExtra(PdfView.EXTRA_PHOTOS);
 
         getSupportActionBar().setTitle("Pictures");
 

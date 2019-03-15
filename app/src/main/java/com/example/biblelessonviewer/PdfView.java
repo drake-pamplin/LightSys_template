@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
@@ -12,12 +12,16 @@ import android.widget.Toast;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
-public class pdf_view extends AppCompatActivity {
+public class PdfView extends AppCompatActivity {
 
-    public static final String EXTRA_BOOK = "com.example.card_menu.BOOK";
-    public static final String EXTRA_PHOTOS = "com.example.card_menu.PHOTOS";
+    public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
+    public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
 
     PDFView pdfView;
+
+    String book;
+    String lesson;
+    String[] photos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,17 @@ public class pdf_view extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        String book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
-        String lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
+
+        if (intent.getStringExtra(LessonView.EXTRA_ACTIVITY) != null) {
+            book = intent.getStringExtra(LessonView.EXTRA_BOOK);
+            lesson = intent.getStringExtra(LessonView.EXTRA_LESSON);
+            photos = intent.getStringArrayExtra(LessonView.EXTRA_PHOTOS);
+        }
+        else {
+            book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
+            lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
+            photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
+        }
         //String[] photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
 
         if (book.equals("0")) {
@@ -66,11 +79,7 @@ public class pdf_view extends AppCompatActivity {
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent = getIntent();
-        String book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
-        String[] photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
-
-        intent = new Intent(this, image_list.class);
+        Intent intent = new Intent(this, ImageList.class);
 
         switch (item.getItemId()) {
             case R.id.action_picture:

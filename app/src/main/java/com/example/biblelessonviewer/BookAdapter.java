@@ -1,4 +1,4 @@
-package com.example.card_menu;
+package com.example.biblelessonviewer;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
-    public static final String EXTRA_BOOK = "com.example.card_menu.BOOK";
+    public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
 
     private List<RecyclerItem> listItems;
     private Context mContext;
@@ -47,7 +47,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext, "Clicked on book " + itemList.getBook(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext, lesson_view.class);
+                Intent intent = new Intent(mContext, LessonView.class);
                 intent.putExtra(EXTRA_BOOK, itemList.getBook());
                 mContext.startActivity(intent);
             }
