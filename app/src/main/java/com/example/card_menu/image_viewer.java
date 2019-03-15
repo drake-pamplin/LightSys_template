@@ -22,13 +22,12 @@ public class image_viewer extends AppCompatActivity {
 
     ImageView imgDisplay;
     MediaPlayer mediaPlayer;
-    public String link ="https://5fish.mobi/";
+    public String link = "https://5fish.mobi/";
     public Menu menu;
     private WifiManager wifiManager;
     boolean wifi = false;
     boolean enter = true;
     boolean go = false;
-
 
 
     private BroadcastReceiver wifiStateReceiver = new BroadcastReceiver() {
@@ -41,7 +40,6 @@ public class image_viewer extends AppCompatActivity {
             }
         }
     };
-
 
 
     @Override
@@ -95,6 +93,9 @@ public class image_viewer extends AppCompatActivity {
 
         imgDisplay = findViewById(R.id.imgDisplay);
         imgDisplay.setImageDrawable(c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + lesson, "drawable", c.getPackageName())));
+
+
+
     }
 
     @Override
@@ -106,12 +107,12 @@ public class image_viewer extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(wifi)
-        {
+        if (wifi) {
             getMenuInflater().inflate(R.menu.audio_menu, menu);
         }
         return true;
     }
+
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -134,10 +135,8 @@ public class image_viewer extends AppCompatActivity {
     }
 
 
-    public void onStop()
-    {
-        if (!enter || go)
-        {
+    public void onStop() {
+        if (!enter || go) {
             enter = true;
             go = false;
             mediaPlayer.release();
@@ -147,12 +146,9 @@ public class image_viewer extends AppCompatActivity {
     }
 
 
+    public void play() {
 
-    public void play()
-    {
-
-        if (enter)
-        {
+        if (enter) {
             enter = false;
             go = true;
             mediaPlayer = new MediaPlayer();
@@ -180,31 +176,21 @@ public class image_viewer extends AppCompatActivity {
             });
 
 
-
-        }
-        else
-        {
-            if (go)
-            {
+        } else {
+            if (go) {
                 go = false;
                 mediaPlayer.pause();
-            }
-            else
-            {
+            } else {
                 go = true;
                 mediaPlayer.start();
             }
         }
 
 
-
     }
 
-
-    public void restart()
-    {
-        if (!enter)
-        {
+    public void restart() {
+        if (!enter) {
             enter = true;
             go = true;
             mediaPlayer.release();
@@ -212,4 +198,52 @@ public class image_viewer extends AppCompatActivity {
         }
     }
 
+
+
+    int location = 0;
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mediaPlayer.pause();
+        location = mediaPlayer.getCurrentPosition();
+        outState.putInt("spot", location);
+    }
+
+
+
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState)
+    {
+        location = savedInstanceState.getInt("spot");
+        if (location > 0)
+        {
+            mediaPlayer = new MediaPlayer();
+            try {
+                mediaPlayer.setDataSource(link);
+
+                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                    @Override
+                    public void onPrepared(MediaPlayer mp) {
+                        mp.seekTo(location);
+                        mp.start();
+                    }
+                });
+                mediaPlayer.prepareAsync();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    mediaPlayer.release(); // finish current activity
+                    enter = true;
+                    go = false;
+                }
+            });
+        }
+    }
 }
