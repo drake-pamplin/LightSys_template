@@ -220,6 +220,8 @@ public class image_viewer extends AppCompatActivity {
         location = savedInstanceState.getInt("spot");
         if (location > 0)
         {
+            enter = false;
+            go = true;
             mediaPlayer = new MediaPlayer();
             try {
                 mediaPlayer.setDataSource(link);
