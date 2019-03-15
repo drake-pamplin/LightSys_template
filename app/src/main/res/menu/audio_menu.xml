@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!--
+    -Right-click "res"
+    -New -> Android Resource Directory
+    -Pick "menu"
+    -Right-click "menu"
+    -New -> Android Resource File
+    -name it with "menu" in name
+    -->
+
+    <item
+        android:id="@+id/action_play"
+        android:icon="@drawable/audio"
+        android:title="@string/action_play"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_stop"
+        android:icon="@drawable/stop"
+        android:title="@string/action_stop"
+        app:showAsAction="ifRoom" />
+
+
+
+
+
+</menu>
