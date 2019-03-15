@@ -2,57 +2,52 @@ package com.example.card_menu;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
+public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
     public static final String EXTRA_BOOK = "com.example.card_menu.BOOK";
     public static final String EXTRA_LESSON = "com.example.card_menu.LESSON";
-    public static final String EXTRA_PHOTOS = "com.example.card_menu.PHOTOS";
 
-    private List<RecyclerItem> listItems;
+    private List<ImageItem> listItems;
     private Context mContext;
 
-    public LessonAdapter(List<RecyclerItem> listItems, Context mContext) {
+    public ImageAdapter(List<ImageItem> listItems, Context mContext) {
         this.listItems = listItems;
         this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public LessonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_item, viewGroup, false);
-        return new LessonAdapter.ViewHolder(v);
+    public ImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.image_item, viewGroup, false);
+        return new ImageAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LessonAdapter.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ImageAdapter.ViewHolder viewHolder, int i) {
 
-        final RecyclerItem itemList = listItems.get(i);
+        final ImageItem itemList = listItems.get(i);
         final int x = i;
         viewHolder.txtTitle.setText(itemList.getTitle());
-        viewHolder.txtDescription.setText(itemList.getDescription());
         viewHolder.imgDisplay.setImageDrawable(itemList.getImage());
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext, "Clicked on book " + itemList.getBook() + ", lesson " + itemList.getLesson(), Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(mContext, pdf_view.class);
+                Intent intent = new Intent(mContext, image_viewer.class);
                 intent.putExtra(EXTRA_BOOK, itemList.getBook());
                 intent.putExtra(EXTRA_LESSON, itemList.getLesson());
-                intent.putExtra(EXTRA_PHOTOS, itemList.getPhotos());
                 mContext.startActivity(intent);
             }
         });
@@ -66,7 +61,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView txtTitle;
-        public TextView txtDescription;
         public ImageView imgDisplay;
         public RelativeLayout parentLayout;
 
@@ -74,7 +68,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             super(itemView);
 
             txtTitle = itemView.findViewById(R.id.txtTitle);
-            txtDescription = itemView.findViewById(R.id.txtDescription);
             imgDisplay = itemView.findViewById(R.id.imgDisplay);
             parentLayout = itemView.findViewById(R.id.relative_layout);
         }

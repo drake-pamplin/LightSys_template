@@ -52,13 +52,23 @@ public class MainActivity extends AppCompatActivity {
           * Lesson number is not used in the book view, set it to "0"
         */
 
+        //book 0
+        listItems.add(new RecyclerItem(
+                "Good News",
+                "The Story of Salvation",
+                c.getResources().getDrawable(c.getResources().getIdentifier("book_0", "drawable", c.getPackageName())),
+                "0",
+                null,
+                null));
+
         //book 1
         listItems.add(new RecyclerItem(
                 "Book 1",
                 "Beginning with GOD",
                  c.getResources().getDrawable(c.getResources().getIdentifier("book_1", "drawable", c.getPackageName())),
                 "1",
-                "0"));
+                null,
+                null));
 
         //book 2
         listItems.add(new RecyclerItem(
@@ -66,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 "Mighty Men GOD",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_2", "drawable", c.getPackageName())),
                 "2",
-                "0"));
+                null,
+                null));
 
         //book 3
         listItems.add(new RecyclerItem(
@@ -74,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
                 "Victory through GOD",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_3", "drawable", c.getPackageName())),
                 "3",
-                "0"));
+                null,
+                null));
 
         //book 4
         listItems.add(new RecyclerItem(
@@ -82,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 "Servants of GOD",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_4", "drawable", c.getPackageName())),
                 "4",
-                "0"));
+                null,
+                null));
 
         //book 5
         listItems.add(new RecyclerItem(
@@ -90,7 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 "On Trial For GOD",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_5", "drawable", c.getPackageName())),
                 "5",
-                "0"));
+                null,
+                null));
 
         //book 6
         listItems.add(new RecyclerItem(
@@ -98,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 "JESUS – Teacher & Healer",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_6", "drawable", c.getPackageName())),
                 "6",
-                "0"));
+                null,
+                null));
 
         //book 7
         listItems.add(new RecyclerItem(
@@ -106,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                 "JESUS – Lord & Saviour",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_7", "drawable", c.getPackageName())),
                 "7",
-                "0"));
+                null,
+                null));
 
         //book 8
         listItems.add(new RecyclerItem(
@@ -114,7 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 "Acts of the HOLY SPIRIT",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_8", "drawable", c.getPackageName())),
                 "8",
-                "0"));
+                null,
+                null));
 
         //set adapter
         adapter = new BookAdapter(listItems, this);
