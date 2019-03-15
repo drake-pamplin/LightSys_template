@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,7 +23,9 @@ public class lesson_view extends AppCompatActivity {
     private LessonAdapter adapter;
     private List<RecyclerItem> listItems;
 
-    private String[][] title = {
+    public static final String EXTRA_ITEM = "com.example.card_menu.ITEM";
+
+    public static String[][] title = {
             {
                 "The Creation",
                 "God Creates the First Man and Woman",
@@ -400,5 +405,55 @@ public class lesson_view extends AppCompatActivity {
         //set adapter
         adapter = new LessonAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        return true;
+    }
+
+    //handle menu item pressed
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(this, info_view.class);
+        Intent search = new Intent(this, search_view.class);
+
+        switch (item.getItemId()) {
+            case R.id.action_search:
+                // user tryna do a search
+                this.startActivity(search);
+                return true;
+            case R.id.action_about:
+                //user chose the "about" item, open the about view
+                intent.putExtra(EXTRA_ITEM, "About");
+                this.startActivity(intent);
+                return true;
+
+            case R.id.action_instructions:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_ITEM, "Instructions");
+                this.startActivity(intent);
+                return true;
+
+            default:
+                //If we got here, the user's action was not recognized.
+                //Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    // make OS back button to to MainActivity
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            Intent intent = new Intent(lesson_view.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 }

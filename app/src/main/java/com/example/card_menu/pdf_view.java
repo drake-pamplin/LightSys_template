@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -14,10 +15,13 @@ import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
 public class pdf_view extends AppCompatActivity {
 
+    PDFView pdfView;
+    String book;
+    String lesson;
     public static final String EXTRA_BOOK = "com.example.card_menu.BOOK";
+    public static final String EXTRA_PDF = "com.example.card_menu.PDF";
     public static final String EXTRA_PHOTOS = "com.example.card_menu.PHOTOS";
 
-    PDFView pdfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,16 @@ public class pdf_view extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        String book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
-        String lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
+        if (intent.getStringExtra(search_result.EXTRA_SEARCH) != null)
+        {
+            book = intent.getStringExtra(search_result.EXTRA_BOOK);
+            lesson = intent.getStringExtra(search_result.EXTRA_LESSON);
+        }
+        else
+        {
+            book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
+            lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
+        }
         //String[] photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
 
         if (book.equals("0")) {
@@ -85,5 +97,20 @@ public class pdf_view extends AppCompatActivity {
                 //Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    // make OS back button go to lesson_view
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            Intent intent = new Intent(pdf_view.this, lesson_view.class);
+            intent.putExtra(EXTRA_BOOK, book);
+            intent.putExtra(EXTRA_PDF, "yes");
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 }
