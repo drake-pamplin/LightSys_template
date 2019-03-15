@@ -10,9 +10,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+        android:paddingRight="0sp"
+        app:theme="@style/AppTheme" />
 
     <ListView
         android:id="@+id/list"
@@ -37,6 +38,5 @@
         app:layout_constraintTop_toBottomOf="@id/my_toolbar" >
 
     </android.support.v7.widget.RecyclerView>
-
 
 </RelativeLayout>

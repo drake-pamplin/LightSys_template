@@ -11,9 +11,9 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="?attr/colorPrimaryDark"
         android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:theme="@style/AppTheme"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
@@ -21,9 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerView"
+        android:background="@color/light_blue"
         android:paddingTop="?attr/actionBarSize"
         app:layout_constraintTop_toBottomOf="@id/my_toolbar" >
 
     </android.support.v7.widget.RecyclerView>
+
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,8 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -238,6 +241,10 @@ public class search_view extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
 
+        //add upwards navigation
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+
         mListView = (ListView) findViewById(R.id.list);
         mEmptyView = (TextView) findViewById(R.id.emptyView);
 
@@ -269,6 +276,16 @@ public class search_view extends AppCompatActivity {
         mSearchView = (SearchView) mSearch.getActionView();
         mSearchView.setIconified(false);
         mSearchView.setQueryHint("Search...");
+
+        // controlling colors of search bar
+        TextView searchText = (TextView) mSearchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchText.setTextColor(Color.WHITE);
+        int color_accent = getResources().getColor(R.color.colorPrimary);
+        searchText.setHintTextColor(color_accent);
+        mSearchView.setIconifiedByDefault(false);
+        // adjust padding to left
+        LinearLayout searchEditFrame = (LinearLayout) mSearchView.findViewById(R.id.search_edit_frame); // Get the Linear Layout
+        ((LinearLayout.LayoutParams) searchEditFrame.getLayoutParams()).leftMargin = -25;
 
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
