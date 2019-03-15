@@ -20,23 +20,25 @@ import java.io.IOException;
 public class image_viewer extends AppCompatActivity {
 
     ImageView imgDisplay;
-    PDFView pdfView;
     MediaPlayer mediaPlayer;
     public String link ="https://5fish.mobi/";
     public Menu menu;
     boolean wifi = false;
     boolean enter = true;
     boolean go = false;
-    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
+    private BroadcastReceiver wifiStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            int wifiStateExtra = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,WifiManager.WIFI_STATE_UNKNOWN);
-            if(wifiStateExtra == WifiManager.WIFI_STATE_ENABLED)
-            {
+            int wifiStateExtra = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,
+                    WifiManager.WIFI_STATE_UNKNOWN);
+            if (wifiStateExtra == WifiManager.WIFI_STATE_ENABLED) {
                 wifi = true;
             }
         }
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,8 +109,8 @@ public class image_viewer extends AppCompatActivity {
 
                 return true;
 
-            case R.id.action_stop:
-                stop();
+            case R.id.action_restart:
+                restart();
                 return true;
 
 
@@ -122,26 +124,16 @@ public class image_viewer extends AppCompatActivity {
 
     public void onStop()
     {
-        if (enter || go)
+        if (!enter || go)
         {
             enter = true;
             go = false;
             mediaPlayer.release();
         }
         super.onStop();
-
     }
 
-    public void onDestroy()
-    {
-        if (enter || go)
-        {
-            enter = false;
-            go = false;
-            mediaPlayer.release();
-        }
-        super.onDestroy();
-    }
+
 
     public void play()
     {
@@ -196,13 +188,14 @@ public class image_viewer extends AppCompatActivity {
     }
 
 
-    public void stop()
+    public void restart()
     {
         if (!enter)
         {
             enter = true;
-            go = false;
+            go = true;
             mediaPlayer.release();
+            play();
         }
     }
 

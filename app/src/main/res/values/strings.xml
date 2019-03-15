@@ -4,5 +4,5 @@
     <string name="action_instructions">Instructions</string>
     <string name="action_picture">Pictures</string>
     <string name="action_play">Play</string>
-    <string name="action_stop">Stop</string>
+    <string name="action_restart">Stop</string>
 </resources>

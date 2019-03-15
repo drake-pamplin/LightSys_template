@@ -17,14 +17,14 @@
 
     <item
         android:id="@+id/action_play"
-        android:icon="@drawable/audio"
+        android:icon="@drawable/play_pause"
         android:title="@string/action_play"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_stop"
-        android:icon="@drawable/stop"
-        android:title="@string/action_stop"
+        android:id="@+id/action_restart"
+        android:icon="@drawable/restart"
+        android:title="@string/action_restart"
         app:showAsAction="ifRoom" />
 
 
