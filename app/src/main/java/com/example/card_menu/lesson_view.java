@@ -21,6 +21,42 @@ public class lesson_view extends AppCompatActivity {
     private List<RecyclerItem> listItems;
 
     private String[][] title = {
+            {
+                "The Creation",
+                "God Creates the First Man and Woman",
+                "Sin Comes into the World",
+                "Cain and Abel",
+                "Noah and the Flood",
+                "The Birth of Isaac",
+                "Moses is Given the Ten Commandments",
+                "The Ten Commandments",
+                "A Sacrifice for Sin",
+                "Jesus' Birth is Announced",
+                "Jesus is Born",
+                "Jesus the Teacher",
+                "Jesus the Worker of Miracles",
+                "Jesus is Crucified",
+                "Jesus is Alive",
+                "Jesus Appears to His Disciples",
+                "Jesus Returns to Heaven",
+                "The Way Back to God",
+                "You Must be Born Again",
+                "Coming of the Holy Spirit",
+                "Walk in the Light",
+                "Jesus Gives Us New Life",
+                "Loving Others",
+                "God's Power, not Magic",
+                "God has Power over Evil Spirits",
+                "Satan's Opposition",
+                "The Forgiveness of God",
+                "Christian's Should always Pray",
+                "Life After Death",
+                "What is the Church?",
+                "How to Worship God",
+                "Jesus is Coming Again",
+                "Be Fruitful",
+                "Go and Preach"
+            },
             { //book 1
                 "How Everything Began",
                 "Everything Man Needed",
@@ -231,6 +267,71 @@ public class lesson_view extends AppCompatActivity {
             }
     };
 
+    String[][][] photos = {
+            {
+                {"1","2","3"},
+                {"2","3"},
+                {"4"},
+                {"4","5"},
+                {"6","7"},
+                {"8"},
+                {"9"},
+                {"9","10"},
+                {"10","11","17"},
+                {"12"},
+                {"12","13"},
+                {"11","14"},
+                {"15"},
+                {"15","16","17","21"},
+                {"18"},
+                {"17","19"},
+                {"20"},
+                {"20","22","23"},
+                {"15","22","24"},
+                {"20","24","25"},
+                {"25","26"},
+                {"27","28"},
+                {"29"},
+                {"30"},
+                {"31"},
+                {"32"},
+                {"33"},
+                {"34"},
+                {"4","5","21","35"},
+                {"36"},
+                {"37"},
+                {"20","38"},
+                {"39"},
+                {"40"}
+            },
+            {
+                {"1"},
+                {"2"},
+                {"3"},
+                {"4"},
+                {"5"},
+                {"6"},
+                {"7"},
+                {"8"},
+                {"9"},
+                {"10"},
+                {"11"},
+                {"12"},
+                {"13"},
+                {"14"},
+                {"15"},
+                {"16"},
+                {"17"},
+                {"18"},
+                {"19"},
+                {"20"},
+                {"21"},
+                {"22"},
+                {"23"},
+                {"24"}
+            }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,7 +348,12 @@ public class lesson_view extends AppCompatActivity {
         Intent intent = getIntent();
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
 
-        getSupportActionBar().setTitle("Book " + book);
+        if (book.equals("0")) {
+            getSupportActionBar().setTitle("Good News");
+        }
+        else {
+            getSupportActionBar().setTitle("Book " + book);
+        }
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -266,13 +372,29 @@ public class lesson_view extends AppCompatActivity {
          * Lesson number ( let current code handle this )
         */
 
-        for (int i = 0; i < 24; i++) {
+        int max_lessons;
+        int array;
+        String[][] photo_array;
+
+        if (book.equals("0")) {
+            max_lessons = 34;
+            array = 0;
+            photo_array = photos[array];
+        }
+        else {
+            max_lessons = 24;
+            array = 1;
+            photo_array = photos[array];
+        }
+
+        for (int i = 0; i < max_lessons; i++) {
             listItems.add(new RecyclerItem(
                     "Lesson " + (i + 1),
-                    title[Integer.parseInt(book) - 1][i],
-                    c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + (i + 1), "drawable", c.getPackageName())),
+                    title[Integer.parseInt(book)][i],
+                    c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + (photo_array[i][0]), "drawable", c.getPackageName())),
                     book,
-                    "" + (i + 1)));
+                    "" + (i + 1),
+                    photo_array[i]));
         }
 
         //set adapter

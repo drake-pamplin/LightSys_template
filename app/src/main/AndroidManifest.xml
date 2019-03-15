@@ -19,22 +19,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".info_view"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".lesson_view"
             android:launchMode="singleTask"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".pdf_view"
-            android:parentActivityName=".lesson_view">
-        </activity>
-
+            android:launchMode="singleTask"
+            android:parentActivityName=".lesson_view" />
         <activity
-            android:name=".info_view"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:name=".image_list"
+            android:launchMode="singleTask"
+            android:parentActivityName=".pdf_view"></activity>
+        <activity
+            android:name=".image_viewer"
+            android:parentActivityName=".image_list" />
     </application>
 
 </manifest>

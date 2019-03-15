@@ -10,13 +10,15 @@ public class RecyclerItem {
     private Drawable image;
     private String book_number;
     private String lesson_number;
+    private String[] photos;
 
-    public RecyclerItem(String title, String description, Drawable image, String book_number, String lesson_number) {
+    public RecyclerItem(String title, String description, Drawable image, String book_number, String lesson_number, String[] photos) {
         this.title = title;
         this.description = description;
         this.image = image;
         this.book_number = book_number;
         this.lesson_number = lesson_number;
+        this.photos = photos;
     }
 
     public String getTitle() {
@@ -57,5 +59,13 @@ public class RecyclerItem {
 
     public void setLesson(String lesson_number) {
         this.lesson_number = lesson_number;
+    }
+
+    public String[] getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
     }
 }
