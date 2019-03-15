@@ -3,6 +3,7 @@ package com.example.card_menu;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBar;
@@ -23,9 +24,12 @@ public class image_viewer extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     public String link ="https://5fish.mobi/";
     public Menu menu;
+    private WifiManager wifiManager;
     boolean wifi = false;
     boolean enter = true;
     boolean go = false;
+
+
 
     private BroadcastReceiver wifiStateReceiver = new BroadcastReceiver() {
         @Override
@@ -82,6 +86,8 @@ public class image_viewer extends AppCompatActivity {
 
         link = link + book_S + "/low/" + book_S + "-" + lesson_S + ".mp3";
 
+        wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
 
         getSupportActionBar().setTitle("Picture " + lesson);
 
@@ -91,10 +97,16 @@ public class image_viewer extends AppCompatActivity {
         imgDisplay.setImageDrawable(c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + lesson, "drawable", c.getPackageName())));
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter intentFilter = new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        registerReceiver(wifiStateReceiver, intentFilter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if(!wifi)
+        if(wifi)
         {
             getMenuInflater().inflate(R.menu.audio_menu, menu);
         }
@@ -130,6 +142,7 @@ public class image_viewer extends AppCompatActivity {
             go = false;
             mediaPlayer.release();
         }
+        unregisterReceiver(wifiStateReceiver);
         super.onStop();
     }
 
