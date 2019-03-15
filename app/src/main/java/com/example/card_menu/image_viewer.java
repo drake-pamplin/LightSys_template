@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 public class image_viewer extends AppCompatActivity {
@@ -35,5 +37,30 @@ public class image_viewer extends AppCompatActivity {
 
         imgDisplay = findViewById(R.id.imgDisplay);
         imgDisplay.setImageDrawable(c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + lesson, "drawable", c.getPackageName())));
+    }
+
+    //create overflow menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mp3_view_menu, menu);
+        return true;
+    }
+
+    //handle menu item pressed
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent = new Intent(this, mp3_access.class);
+
+        switch (item.getItemId()) {
+            case R.id.action_mp3:
+                this.startActivity(intent);
+                return true;
+
+            default:
+                //If we got here, the user's action was not recognized.
+                //Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

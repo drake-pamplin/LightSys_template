@@ -9,12 +9,17 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class lesson_view extends AppCompatActivity {
+
+    public static final String EXTRA_BOOK ="com.example.card_menu.BOOK";
+    public static final String EXTRA_LESSON ="com.example.card_menu.LESSON";
 
     private RecyclerView recyclerView;
     private LessonAdapter adapter;
@@ -400,5 +405,249 @@ public class lesson_view extends AppCompatActivity {
         //set adapter
         adapter = new LessonAdapter(listItems, this);
         recyclerView.setAdapter(adapter);
+    }
+
+    //create overflow menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        Intent intent = getIntent();
+        String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
+        int num_lessons;
+
+        if (book.equals("0")) {
+            num_lessons = 34;
+        }
+        else {
+            num_lessons = 24;
+        }
+
+        for (int i = 0; i < num_lessons; i++) {
+            menu.add(Menu.NONE, i, Menu.NONE, "Lesson " + (i + 1));
+        }
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //handle menu item pressed
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = getIntent();
+        String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
+
+        intent = new Intent(this, pdf_view.class);
+
+        switch (item.getItemId()) {
+            case 0:
+                //user chose the "Lesson1" item, open the about view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "1" );
+                this.startActivity(intent);
+                return true;
+
+            case 1:
+                //user chose the "Lesson2" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "2" );
+                this.startActivity(intent);
+                return true;
+            case 2:
+                //user chose the "Lesson3" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "3" );
+                this.startActivity(intent);
+                return true;
+            case 3:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "4" );
+                this.startActivity(intent);
+                return true;
+            case 4:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "5" );
+                this.startActivity(intent);
+                return true;
+            case 5:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "6" );
+                this.startActivity(intent);
+                return true;
+            case 6:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "7" );
+                this.startActivity(intent);
+                return true;
+            case 7:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "8" );
+                this.startActivity(intent);
+                return true;
+
+            case 8:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "9" );
+                this.startActivity(intent);
+                return true;
+            case 9:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "10" );
+                this.startActivity(intent);
+                return true;
+            case 10:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "11" );
+                this.startActivity(intent);
+                return true;
+            case 11:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "12" );
+                this.startActivity(intent);
+                return true;
+            case 12:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "13" );
+                this.startActivity(intent);
+                return true;
+            case 13:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "14" );
+                this.startActivity(intent);
+                return true;
+            case 14:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "15" );
+                this.startActivity(intent);
+                return true;
+            case 15:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "16" );
+                this.startActivity(intent);
+                return true;
+            case 16:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "17" );
+                this.startActivity(intent);
+                return true;
+            case 17:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "18" );
+                this.startActivity(intent);
+                return true;
+            case 18:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "19" );
+                this.startActivity(intent);
+                return true;
+            case 19:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "20" );
+                this.startActivity(intent);
+                return true;
+            case 20:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "21" );
+                this.startActivity(intent);
+                return true;
+            case 21:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "22" );
+                this.startActivity(intent);
+                return true;
+            case 22:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "23" );
+                this.startActivity(intent);
+                return true;
+            case 23:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "24" );
+                this.startActivity(intent);
+                return true;
+            case 24:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "25" );
+                this.startActivity(intent);
+                return true;
+            case 25:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "26" );
+                this.startActivity(intent);
+                return true;
+            case 26:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "27" );
+                this.startActivity(intent);
+                return true;
+            case 27:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "28" );
+                this.startActivity(intent);
+                return true;
+            case 28:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "29" );
+                this.startActivity(intent);
+                return true;
+            case 29:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "30" );
+                this.startActivity(intent);
+                return true;
+            case 30:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "31" );
+                this.startActivity(intent);
+                return true;
+            case 31:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "32" );
+                this.startActivity(intent);
+                return true;
+            case 32:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "33" );
+                this.startActivity(intent);
+                return true;
+            case 33:
+                //user chose the "instructions" item, open instructions view
+                intent.putExtra(EXTRA_BOOK, book);
+                intent.putExtra( EXTRA_LESSON, "34" );
+                this.startActivity(intent);
+                return true;
+
+            default:
+                //If we got here, the user's action was not recognized.
+                //Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

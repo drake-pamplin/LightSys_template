@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.card_menu">
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -33,10 +35,14 @@
         <activity
             android:name=".image_list"
             android:launchMode="singleTask"
-            android:parentActivityName=".pdf_view"></activity>
+            android:parentActivityName=".pdf_view" />
         <activity
             android:name=".image_viewer"
+            android:launchMode="singleTask"
             android:parentActivityName=".image_list" />
+        <activity
+            android:name=".mp3_access"
+            android:parentActivityName=".image_viewer"/>
     </application>
 
 </manifest>
