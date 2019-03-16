@@ -28,6 +28,7 @@ public class LessonView extends AppCompatActivity {
     private LessonAdapter adapter;
     private List<RecyclerItem> listItems;
 
+    // if this array is changed AT ALL, also change titles in SearchBar.java
     public static String[][] title = {
             {
                     "The Creation",
@@ -457,8 +458,7 @@ public class LessonView extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_search:
-                // user tryna do a search
-                intent.putExtra(EXTRA_PHOTOS, photo_array[0]);
+                // user wants to do a search
                 this.startActivity(search);
                 return true;
             case 0:

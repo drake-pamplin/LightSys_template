@@ -48,7 +48,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(mContext, "Clicked on book " + itemList.getBook() + ", lesson " + itemList.getLesson(), Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(mContext, PdfView.class);
                 intent.putExtra(EXTRA_BOOK, itemList.getBook());
                 intent.putExtra(EXTRA_LESSON, itemList.getLesson());

@@ -19,30 +19,34 @@ public class SearchResult extends AppCompatActivity {
     private RecyclerView recyclerView;
     private LessonAdapter adapter;
     private List<RecyclerItem> listItems;
-    public static final String EXTRA_BOOK = "com.example.card_menu.BOOK";
-    public static final String EXTRA_LESSON = "com.example.card_menu.LESSON";
-    public static final String EXTRA_SEARCH = "com.example.card_menu.SEARCH";
-//    public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
-
-
+    public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
+    public static final String EXTRA_LESSON = "com.example.biblelessonviewer.LESSON";
+    public static final String EXTRA_SEARCH = "com.example.biblelessonviewer.SEARCH";
+    public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
 
     private String[][] title = LessonView.title;
-//    private String[][][] photos = LessonView.photos;
+    private String[][][] photos = LessonView.photos;
 
     private int[] bookNumber(String lesson_title) {
 
         int[] values = new int[2];
 
-        for (int i = 0; i < 8; i++)
+        // loop through book
+        for (int i = 0; i < 9; i++)
         {
-            for (int j = 0; j < 24; j++)
+            // loop through lessons
+            int l;
+            // 34 lessons in Good News
+            if (i == 0) {l = 34;}
+            // 24 lessons in books 1-8
+            else {l = 24;}
+            for (int j = 0; j < l; j++)
             {
                 if (lesson_title.equals(title[i][j]))
                 {
-                    System.out.println(i + " " + j);
 
                     values[0] = i;
-                    values[1] = j+1;
+                    values[1] = j;
                     return values;
                 }
             }
@@ -74,10 +78,9 @@ public class SearchResult extends AppCompatActivity {
         // gets book number, lesson number
         int[] results = bookNumber(lesson);
         String book = Integer.toString(results[0]);
+        int lessonNum = results[1];
 
         getSupportActionBar().setTitle("Book " + book);
-
-        System.out.println("Book " + book);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -85,29 +88,20 @@ public class SearchResult extends AppCompatActivity {
 
         listItems = new ArrayList<>();
 
-        // photo stuff
-//        String[][][] photos = LessonView.photos;
-//        Intent intent = getIntent();
-//        String b = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
-//        int array;
-//        String[][] photo_array;
-//
-//        if (b.equals("0")) {
-//            array = 0;
-//            photo_array = photos[array];
-//        }
-//        else {
-//            array = 1;
-//            photo_array = photos[array];
-//        }
+        // chooses correct array for the book
+        String[][] photo_array;
+        if (book.equals("0"))
+            photo_array = photos[0];
+        else
+            photo_array = photos[1];
 
 
-
+        // sends book number, lesson number, and lesson's photo(s) to PdfView
         Intent view = new Intent(this, PdfView.class);
         view.putExtra(EXTRA_BOOK, book);
         view.putExtra(EXTRA_LESSON, Integer.toString(results[1]));
         view.putExtra(EXTRA_SEARCH, "yes");
-//        view.putExtra(EXTRA_PHOTOS, photo_array[0]);
+        view.putExtra(EXTRA_PHOTOS, photo_array[lessonNum-1]);
         startActivity(view);
 
     }

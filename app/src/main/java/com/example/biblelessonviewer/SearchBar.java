@@ -29,8 +29,43 @@ public class SearchBar extends AppCompatActivity {
     SearchView mSearchView;
     public static final String EXTRA_ITEM = "com.example.biblelessonviewer.ITEM";
 
-
+    // if this array is changed AT ALL, also change titles in LessonView.java
     private String[] title = {
+            // Good News
+            "The Creation",
+            "God Creates the First Man and Woman",
+            "Sin Comes into the World",
+            "Cain and Abel",
+            "Noah and the Flood",
+            "The Birth of Isaac",
+            "Moses is Given the Ten Commandments",
+            "The Ten Commandments",
+            "A Sacrifice for Sin",
+            "Jesus' Birth is Announced",
+            "Jesus is Born",
+            "Jesus the Teacher",
+            "Jesus the Worker of Miracles",
+            "Jesus is Crucified",
+            "Jesus is Alive",
+            "Jesus Appears to His Disciples",
+            "Jesus Returns to Heaven",
+            "The Way Back to God",
+            "You Must be Born Again",
+            "Coming of the Holy Spirit",
+            "Walk in the Light",
+            "Jesus Gives Us New Life",
+            "Loving Others",
+            "God's Power, not Magic",
+            "God has Power over Evil Spirits",
+            "Satan's Opposition",
+            "The Forgiveness of God",
+            "Christian's Should always Pray",
+            "Life After Death",
+            "What is the Church?",
+            "How to Worship God",
+            "Jesus is Coming Again",
+            "Be Fruitful",
+            "Go and Preach",
             //book 1
             "How Everything Began",
             "Everything Man Needed",

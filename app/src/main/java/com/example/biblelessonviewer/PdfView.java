@@ -16,7 +16,7 @@ public class PdfView extends AppCompatActivity {
 
     public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
     public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
-    public static final String EXTRA_PDF = "com.example.card_menu.PDF";
+    public static final String EXTRA_PDF = "com.example.biblelessonviewer.PDF";
 
     PDFView pdfView;
 
@@ -50,7 +50,7 @@ public class PdfView extends AppCompatActivity {
         if (intent.getStringExtra(SearchResult.EXTRA_SEARCH) != null) {
             book = intent.getStringExtra(SearchResult.EXTRA_BOOK);
             lesson = intent.getStringExtra(SearchResult.EXTRA_LESSON);
-//            photos = intent.getStringArrayExtra(SearchResult.EXTRA_PHOTOS);
+            photos = intent.getStringArrayExtra(SearchResult.EXTRA_PHOTOS);
 
         } else if (intent.getStringExtra(LessonView.EXTRA_ACTIVITY) != null) {
             book = intent.getStringExtra(LessonView.EXTRA_BOOK);
