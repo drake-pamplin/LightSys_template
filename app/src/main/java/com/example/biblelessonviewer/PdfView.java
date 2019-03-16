@@ -16,12 +16,22 @@ public class PdfView extends AppCompatActivity {
 
     public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
     public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
+    public static final String EXTRA_PDF = "com.example.card_menu.PDF";
 
     PDFView pdfView;
 
     String book;
     String lesson;
     String[] photos;
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(PdfView.this, LessonView.class);
+        intent.putExtra(EXTRA_BOOK, book);
+        intent.putExtra(EXTRA_PDF, "yes");
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,18 +47,22 @@ public class PdfView extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
+        if (intent.getStringExtra(SearchResult.EXTRA_SEARCH) != null) {
+            book = intent.getStringExtra(SearchResult.EXTRA_BOOK);
+            lesson = intent.getStringExtra(SearchResult.EXTRA_LESSON);
+//            photos = intent.getStringArrayExtra(SearchResult.EXTRA_PHOTOS);
 
-        if (intent.getStringExtra(LessonView.EXTRA_ACTIVITY) != null) {
+        } else if (intent.getStringExtra(LessonView.EXTRA_ACTIVITY) != null) {
             book = intent.getStringExtra(LessonView.EXTRA_BOOK);
             lesson = intent.getStringExtra(LessonView.EXTRA_LESSON);
             photos = intent.getStringArrayExtra(LessonView.EXTRA_PHOTOS);
-        }
-        else {
+
+        } else {
             book = intent.getStringExtra(LessonAdapter.EXTRA_BOOK);
             lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
-            photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
+            photos = intent.getStringArrayExtra(LessonView.EXTRA_PHOTOS);
         }
-        //String[] photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
+
 
         if (book.equals("0")) {
             getSupportActionBar().setTitle("Good News Lesson " + lesson);
@@ -80,6 +94,12 @@ public class PdfView extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, ImageList.class);
+
+
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
 
         switch (item.getItemId()) {
             case R.id.action_picture:

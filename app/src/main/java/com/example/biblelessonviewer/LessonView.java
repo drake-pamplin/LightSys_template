@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -27,7 +28,7 @@ public class LessonView extends AppCompatActivity {
     private LessonAdapter adapter;
     private List<RecyclerItem> listItems;
 
-    private String[][] title = {
+    public static String[][] title = {
             {
                     "The Creation",
                     "God Creates the First Man and Woman",
@@ -274,7 +275,7 @@ public class LessonView extends AppCompatActivity {
             }
     };
 
-    String[][][] photos = {
+    public static String[][][] photos = {
             {
                     {"1","2","3"},
                     {"2","3"},
@@ -412,6 +413,9 @@ public class LessonView extends AppCompatActivity {
     //create overflow menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
         Intent intent = getIntent();
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
         int num_lessons;
@@ -447,10 +451,16 @@ public class LessonView extends AppCompatActivity {
             photo_array = photos[array];
         }
 
+        Intent search = new Intent(this, SearchBar.class);
         intent = new Intent(this, PdfView.class);
         intent.putExtra(EXTRA_ACTIVITY, "lesson view");
 
         switch (item.getItemId()) {
+            case R.id.action_search:
+                // user tryna do a search
+                intent.putExtra(EXTRA_PHOTOS, photo_array[0]);
+                this.startActivity(search);
+                return true;
             case 0:
                 //user chose the "Lesson1" item, open the about view
                 intent.putExtra(EXTRA_BOOK, book);
@@ -697,5 +707,18 @@ public class LessonView extends AppCompatActivity {
                 //Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    // make OS back button to to MainActivity
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if(keyCode == KeyEvent.KEYCODE_BACK)
+        {
+            Intent intent = new Intent(LessonView.this, MainActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        return false;
     }
 }
