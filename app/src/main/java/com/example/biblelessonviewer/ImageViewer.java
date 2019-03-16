@@ -23,6 +23,7 @@ public class ImageViewer extends AppCompatActivity {
     //initialize ImageView variable
     ImageView imgDisplay;
 
+    //array to build the link url
     String[] booklink = {
             "A64560",
             "A65688",
@@ -35,15 +36,20 @@ public class ImageViewer extends AppCompatActivity {
             "A65766"
     };
 
+    //create a media player that can be used anywhere in the page
     MediaPlayer mediaPlayer;
-
+    //start of url
     public String link ="https://5fish.mobi/";
+    //used for buttons in the toolbar
     public Menu menu;
     private WifiManager wifiManager;
     boolean wifi = false;
+    //used to tell if the mediaplayer has been loaded
     boolean enter = true;
+    //used to tell if the mediaplayer is paused
     boolean go = false;
 
+    //checks wifi state
     private BroadcastReceiver wifiStateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -85,9 +91,9 @@ public class ImageViewer extends AppCompatActivity {
         imgDisplay = findViewById(R.id.imgDisplay);
         imgDisplay.setImageDrawable(c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + lesson, "drawable", c.getPackageName())));
 
+        //compiles url for the mediaplayer
         int book_I = Integer.parseInt(book);
         String book_S = booklink[Integer.parseInt(book)];
-
         int lesson_I = Integer.parseInt(lesson);
         String lesson_S;
         if (lesson_I < 10 && book_I != 2) {
@@ -95,12 +101,13 @@ public class ImageViewer extends AppCompatActivity {
         } else {
             lesson_S = "0" + lesson;
         }
-
         link = link + book_S + "/low/" + book_S + "-" + lesson_S + ".mp3";
 
+        //used to check wifi
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
     }
 
+    //used to check wifi
     @Override
     protected void onStart() {
         super.onStart();
@@ -123,11 +130,12 @@ public class ImageViewer extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+            //if play_pause button is pressed
             case R.id.action_play:
                 play();
 
                 return true;
-
+            //if restart button is pressed
             case R.id.action_restart:
                 restart();
                 return true;
@@ -140,6 +148,7 @@ public class ImageViewer extends AppCompatActivity {
         }
     }
 
+    //stops mediaplayer when exiting the page
     public void onStop() {
         if (!enter || go)
         {
@@ -151,10 +160,14 @@ public class ImageViewer extends AppCompatActivity {
         super.onStop();
     }
 
+    //starts, pauses, and, resumes the mediaplayer
     public void play() {
+        //if mediaplayer has been created
         if (enter) {
+            //change status of mediaplayer
             enter = false;
             go = true;
+            //creates and starts the mediaplayer
             mediaPlayer = new MediaPlayer();
             try {
                 mediaPlayer.setDataSource(link);
@@ -170,7 +183,7 @@ public class ImageViewer extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            //listener that resets mediaplayer when it is finished
             mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                 public void onCompletion(MediaPlayer mp) {
                     mediaPlayer.release(); // finish current activity
@@ -179,21 +192,26 @@ public class ImageViewer extends AppCompatActivity {
                 }
             });
         }
+        //if mediaplayer exists
         else {
+            //pauses mediaplayer
             if (go) {
                 go = false;
                 mediaPlayer.pause();
             }
+            //resumes mediaplayer
             else {
                 go = true;
                 mediaPlayer.start();
             }
         }
     }
-
+    //starts the mediaplayer over
     public void restart() {
+        //makes sure the mediaplayer exists before is starts
         if (!enter)
         {
+            //resets mediaplayer then makes a new one
             enter = true;
             go = true;
             mediaPlayer.release();
@@ -201,8 +219,10 @@ public class ImageViewer extends AppCompatActivity {
         }
     }
 
+    //starting playtime for rotated view
     int location = 0;
 
+    //saves the playtime incase the page gets reloaded due to orientation change
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -212,6 +232,7 @@ public class ImageViewer extends AppCompatActivity {
         outState.putInt("spot", location);
     }
 
+    //retrives the playtime after page is reloaded, then creates a new mediaplayer and sets it to that time
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         location = savedInstanceState.getInt("spot");
