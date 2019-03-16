@@ -18,6 +18,9 @@ import java.io.IOException;
 
 public class ImageViewer extends AppCompatActivity {
 
+    //activity that displays the selected image from ImageList
+
+    //initialize ImageView variable
     ImageView imgDisplay;
 
     String[] booklink = {
@@ -65,14 +68,20 @@ public class ImageViewer extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //get intent from ImageList
         Intent intent = getIntent();
+
+        //get book number and lesson number from intent
         String book = intent.getStringExtra(ImageAdapter.EXTRA_BOOK);
         String lesson = intent.getStringExtra(ImageAdapter.EXTRA_LESSON);
 
+        //set activity title in toolbar
         getSupportActionBar().setTitle("Picture " + lesson);
 
+        //get activity context
         Context c = getApplicationContext();
 
+        //get ImageView in layout and set it to selected photo
         imgDisplay = findViewById(R.id.imgDisplay);
         imgDisplay.setImageDrawable(c.getResources().getDrawable(c.getResources().getIdentifier("book_" + book + "_lesson_" + lesson, "drawable", c.getPackageName())));
 
@@ -197,8 +206,9 @@ public class ImageViewer extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        mediaPlayer.pause();
-        location = mediaPlayer.getCurrentPosition();
+        if (!enter) {
+            location = mediaPlayer.getCurrentPosition();
+        }
         outState.putInt("spot", location);
     }
 

@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!--
-    -Right-click "res"
-    -New -> Android Resource Directory
-    -Pick "menu"
-    -Right-click "menu"
-    -New -> Android Resource File
-    -name it with "menu" in name
-    -->
-
     <!-- "About" brings up the "about" page, always be in the overflow -->
     <item
         android:id="@+id/action_about"

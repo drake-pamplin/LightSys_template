@@ -4,22 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- CardView that contains image, title, and description needed for RecyclerItem -->
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:elevation="4dp">
 
+        <!-- RelativeLayout to organize Views -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_margin"
             android:id="@+id/relative_layout" >
 
+            <!-- ImageView to display image -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:id="@+id/imgDisplay" />
+
+            <!-- TextView to display title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,6 +32,8 @@
                 android:text="Title"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:layout_below="@id/imgDisplay" />
+
+            <!-- TextView to display description -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

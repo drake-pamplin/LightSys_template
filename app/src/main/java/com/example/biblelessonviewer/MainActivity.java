@@ -17,11 +17,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //main activity that is called when app launches
+
+    //variables
+    //RecyclerView for displaying list of RecyclerItems
+    //LessonAdapter to handle data for RecyclerItems
+    //List to hold RecyclerItems
     private RecyclerView recyclerView;
     private BookAdapter adapter;
     private List<RecyclerItem> listItems;
-    //private String test = "location_bg";
 
+    //string to determine which overflow menu item was tapped for InfoView
     public static final String EXTRA_ITEM = "com.example.card_menu.ITEM";
 
     @Override
@@ -33,23 +39,25 @@ public class MainActivity extends AppCompatActivity {
         Toolbar my_toolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(my_toolbar);
 
+        //set title in toolbar
         getSupportActionBar().setTitle("Books");
 
+        //get recyclerView from layout and set the LayoutManager
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //initialize list
         listItems = new ArrayList<>();
 
+        //get application context
         Context c = getApplicationContext();
 
-        /* INPUT YOUR CODE BELOW
-         * List items need the following:
-         * "Book ( BOOK NUMBER )"
-         * Description ( pulled from website )
-         * Image name ( Download from website, follow naming convention!!! -> "book_<NUMBER>" )
-         * Book number ( in string format -> "x" )
-         * Lesson number is not used in the book view, set it to "0"
+        /* book item info:
+            * title
+            * description
+            * drawable resource
+            * book number
          */
 
         //book 0

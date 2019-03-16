@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".PdfView">
 
-    <!-- "Picture" option, brings up picture viewer -->
+    <!-- "Picture" option, brings up ImageList -->
     <item
         android:id="@+id/action_picture"
         android:icon="@drawable/image"

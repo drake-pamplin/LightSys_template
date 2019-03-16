@@ -4,17 +4,22 @@ import android.graphics.drawable.Drawable;
 
 public class ImageItem {
 
+    //ImageItem to hold image, title, book number, and lesson number
+    //variables
     private Drawable image;
     private String title;
     private String book;
     private String lesson;
 
+    //constructor to set initial values
     public ImageItem(Drawable image, String title, String book, String lesson) {
         this.image = image;
         this.title = title;
         this.book = book;
         this.lesson = lesson;
     }
+
+    //getters and setters
 
     public Drawable getImage() {
         return image;

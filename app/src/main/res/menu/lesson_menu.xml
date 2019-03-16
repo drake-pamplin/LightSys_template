@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <!-- lesson_menu is blank as LessonView menu items are set in the LessonView class -->
 </menu>

@@ -5,6 +5,19 @@ import android.widget.ImageView;
 
 public class RecyclerItem {
 
+    //RecyclerItem to be used by MainActivity and LessonView
+    //Compatible adapters include:
+    //* BookAdapter
+    //* LessonAdapter
+
+    /* variables that RecyclerItem contains:
+        * title
+        * description
+        * image (drawable)
+        * book number (saved as string)
+        * lesson number (saved as string)
+        * photo array (saved as array of strings)
+    */
     private String title;
     private String description;
     private Drawable image;
@@ -12,6 +25,7 @@ public class RecyclerItem {
     private String lesson_number;
     private String[] photos;
 
+    //constructor
     public RecyclerItem(String title, String description, Drawable image, String book_number, String lesson_number, String[] photos) {
         this.title = title;
         this.description = description;
@@ -20,6 +34,8 @@ public class RecyclerItem {
         this.lesson_number = lesson_number;
         this.photos = photos;
     }
+
+    //getters and setters
 
     public String getTitle() {
         return title;

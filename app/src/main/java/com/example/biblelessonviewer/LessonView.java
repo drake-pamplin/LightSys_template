@@ -18,15 +18,25 @@ import java.util.List;
 
 public class LessonView extends AppCompatActivity {
 
+    //LessonView displays lessons
+
+    //strings for packing data into intents for passing between activities
     public static final String EXTRA_BOOK ="com.example.biblelessonviewer.BOOK";
     public static final String EXTRA_LESSON ="com.example.biblelessonviewer.LESSON";
     public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
     public static final String EXTRA_ACTIVITY = "com.example.biblelessonviewer.ACTIVITY";
 
+    //variables
+    //RecyclerView for displaying list of RecyclerItems
+    //LessonAdapter to handle data for RecyclerItems
+    //List to hold RecyclerItems
     private RecyclerView recyclerView;
     private LessonAdapter adapter;
     private List<RecyclerItem> listItems;
 
+    //2D array
+    //first dimension hold each book
+    //second dimension holds the titles for each lesson
     private String[][] title = {
             {
                     "The Creation",
@@ -274,8 +284,12 @@ public class LessonView extends AppCompatActivity {
             }
     };
 
+    //3D array of photo numbers
+    //first dimension holds values for "Good News" module and Books 1-8
+    //second dimension holds lists of photo numbers
+    //third dimension holds photo numbers
     String[][][] photos = {
-            {
+            { //"Good News" module
                     {"1","2","3"},
                     {"2","3"},
                     {"4"},
@@ -311,7 +325,7 @@ public class LessonView extends AppCompatActivity {
                     {"39"},
                     {"40"}
             },
-            {
+            { //Books 1-8
                     {"1"},
                     {"2"},
                     {"3"},
@@ -352,9 +366,13 @@ public class LessonView extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //get intent from MainActivity
         Intent intent = getIntent();
+        //get book number from intent
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
 
+        //check if book number is 0 ("Good News")
+        //set title accordingly
         if (book.equals("0")) {
             getSupportActionBar().setTitle("Good News");
         }
@@ -362,27 +380,23 @@ public class LessonView extends AppCompatActivity {
             getSupportActionBar().setTitle("Book " + book);
         }
 
+        //get recyclerView from layout
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        //initialize list
         listItems = new ArrayList<>();
 
+        //get application context
         Context c = getApplicationContext();
 
-        /* INPUT YOUR CODE BELOW
-         * List items need the following:
-         * Lesson <NUMBER> ( let the current code handle that )
-         * Title ( populate "title" array above )
-         * Image ( Download from website, follow naming convention!!! -> book 1 lesson 1 photo = "book_1_lesson_1.jpg"
-         * Book number ( let current code handle this )
-         * Lesson number ( let current code handle this )
-         */
-
+        //variables for setting up lession view
         int max_lessons;
         int array;
         String[][] photo_array;
 
+        //check book number and set number of lessons and photo array accordingly
         if (book.equals("0")) {
             max_lessons = 34;
             array = 0;
@@ -394,7 +408,17 @@ public class LessonView extends AppCompatActivity {
             photo_array = photos[array];
         }
 
+        //set up list according to max_lessons
         for (int i = 0; i < max_lessons; i++) {
+            /*
+                * lesson number
+                * lesson title
+                * drawable image
+                * book number
+                * lesson number
+                * photo array
+             */
+
             listItems.add(new RecyclerItem(
                     "Lesson " + (i + 1),
                     title[Integer.parseInt(book)][i],
@@ -412,10 +436,14 @@ public class LessonView extends AppCompatActivity {
     //create overflow menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        //get intent from activity that called this one
         Intent intent = getIntent();
+        //get data from intent
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
+        //variable for number of lessons
         int num_lessons;
 
+        //check which book is being accessed and set number of lessons accordingly
         if (book.equals("0")) {
             num_lessons = 34;
         }
@@ -423,6 +451,7 @@ public class LessonView extends AppCompatActivity {
             num_lessons = 24;
         }
 
+        //set menu items
         for (int i = 0; i < num_lessons; i++) {
             menu.add(Menu.NONE, i, Menu.NONE, "Lesson " + (i + 1));
         }
@@ -433,11 +462,16 @@ public class LessonView extends AppCompatActivity {
     //handle menu item pressed
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //get intent from activity that called this one
         Intent intent = getIntent();
+        //get data from intent
         String book = intent.getStringExtra(BookAdapter.EXTRA_BOOK);
+        //variable that decides which array to use
         int array;
+        //2D array to hold array of photo listings
         String[][] photo_array;
 
+        //determine which book the user is currently in and set photo_array accordingly
         if (book.equals("0")) {
             array = 0;
             photo_array = photos[array];
@@ -447,9 +481,12 @@ public class LessonView extends AppCompatActivity {
             photo_array = photos[array];
         }
 
+        //create new intent for next activity
         intent = new Intent(this, PdfView.class);
+        //put in EXTRA_ACTIVITY to allow next activity to determine which activity called it
         intent.putExtra(EXTRA_ACTIVITY, "lesson view");
 
+        //determine which menu item is tapped and pack extra data accordingly, then start the next activity
         switch (item.getItemId()) {
             case 0:
                 //user chose the "Lesson1" item, open the about view

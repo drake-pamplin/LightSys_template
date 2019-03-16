@@ -16,17 +16,21 @@ import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
 
+    //strings that are used when packing data into intents to pass data between activities
     public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
     public static final String EXTRA_LESSON = "com.example.biblelessonviewer.LESSON";
 
+    //variables, list of items created and context of the current activity
     private List<ImageItem> listItems;
     private Context mContext;
 
+    //constructor, sets values of listItems and mContext
     public ImageAdapter(List<ImageItem> listItems, Context mContext) {
         this.listItems = listItems;
         this.mContext = mContext;
     }
 
+    //inflates ImageItem to current activity view
     @NonNull
     @Override
     public ImageAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -34,17 +38,17 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         return new ImageAdapter.ViewHolder(v);
     }
 
+    //Binds values to ImageItem
     @Override
     public void onBindViewHolder(@NonNull final ImageAdapter.ViewHolder viewHolder, int i) {
 
         final ImageItem itemList = listItems.get(i);
-        final int x = i;
         viewHolder.txtTitle.setText(itemList.getTitle());
         viewHolder.imgDisplay.setImageDrawable(itemList.getImage());
         viewHolder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(mContext, "Clicked on book " + itemList.getBook() + ", lesson " + itemList.getLesson(), Toast.LENGTH_LONG).show();
+                //onClick packs book and lesson numbers into intent and starts the ImageViewer
                 Intent intent = new Intent(mContext, ImageViewer.class);
                 intent.putExtra(EXTRA_BOOK, itemList.getBook());
                 intent.putExtra(EXTRA_LESSON, itemList.getLesson());
@@ -58,12 +62,15 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         return listItems.size();
     }
 
+    //ViewHolder class to bind activity element to ImageItem object
     public class ViewHolder extends RecyclerView.ViewHolder {
 
+        //variables
         public TextView txtTitle;
         public ImageView imgDisplay;
         public RelativeLayout parentLayout;
 
+        //constructor
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

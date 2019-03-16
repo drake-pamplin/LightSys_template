@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ImageViewer">
 
-    <!-- "MP3" option, brings up mp3 viewer -->
+    <!-- "play/pause" option; plays and pauses mp3; always visible if room allows -->
     <item
         android:id="@+id/action_play"
         android:icon="@drawable/play_pause"
         android:title="@string/action_play"
         app:showAsAction="ifRoom" />
 
+    <!-- "restart" option; restarts mp3; always visible if room allows -->
     <item
         android:id="@+id/action_restart"
         android:icon="@drawable/restart"

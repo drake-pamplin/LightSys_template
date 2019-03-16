@@ -11,6 +11,9 @@ import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
 public class InfoView extends AppCompatActivity {
 
+    //activity that displays information designated by user on the MainActivity screen
+
+    //initialize variable to hold PDFView
     PDFView pdfView;
 
     @Override
@@ -26,16 +29,21 @@ public class InfoView extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //get intent from activity calling this one
         Intent intent = getIntent();
+
+        //get the data from the intent set by MainActivity
         String item = intent.getStringExtra(MainActivity.EXTRA_ITEM);
 
+        //set title in toolbar
         getSupportActionBar().setTitle(item);
 
+        //attach variable to PDFView in layout
         pdfView = findViewById(R.id.pdfView);
 
+        //check item requested by MainActivity, display either about page or instructions page
         if (item.equals("About")) {
             pdfView.fromAsset("about.pdf")
-                    //.pages(Integer.parseInt(lesson) + 3)
                     .onRender(new OnRenderListener() {
                         @Override
                         public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {
@@ -46,7 +54,6 @@ public class InfoView extends AppCompatActivity {
         }
         else { //Instructions
             pdfView.fromAsset("instruction.pdf")
-                    //.pages(Integer.parseInt(lesson) + 3)
                     .onRender(new OnRenderListener() {
                         @Override
                         public void onInitiallyRendered(int nbPages, float pageWidth, float pageHeight) {

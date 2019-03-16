@@ -4,22 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- CardView for ImageItem that contains an image and text -->
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:elevation="4dp">
 
+        <!-- RelativeLayout to house items in CardView -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_margin"
             android:id="@+id/relative_layout" >
 
+            <!-- ImageView to display image associated with the lesson -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:id="@+id/imgDisplay" />
+
+            <!-- TextView to display title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ImageViewer">
 
-    <!-- add menu to layout -->
+    <!-- toolbar -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+    <!-- ImageView to display image received from ImageList -->
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -14,11 +14,16 @@ import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 
 public class PdfView extends AppCompatActivity {
 
+    //activity to handle viewing PDFs for books 1-8 and "Good News" module
+
+    //strings used to pack data for the ImageList activity
     public static final String EXTRA_BOOK = "com.example.biblelessonviewer.BOOK";
     public static final String EXTRA_PHOTOS = "com.example.biblelessonviewer.PHOTOS";
 
+    //variable to hold PDFView in layout
     PDFView pdfView;
 
+    //strings to house book number, lesson number, and photo array from activity calling this one
     String book;
     String lesson;
     String[] photos;
@@ -36,8 +41,14 @@ public class PdfView extends AppCompatActivity {
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
 
+        //get intent from activity calling this one
         Intent intent = getIntent();
 
+        //determine which activity called this one; LessonView has additional EXTRA info called
+        //EXTRA_ACTIVITY that can be used to determine is LessonView called this activity
+        //otherwise, handle as if LessonAdapter called this activity
+
+        //get extra data from intent that called this activity
         if (intent.getStringExtra(LessonView.EXTRA_ACTIVITY) != null) {
             book = intent.getStringExtra(LessonView.EXTRA_BOOK);
             lesson = intent.getStringExtra(LessonView.EXTRA_LESSON);
@@ -48,8 +59,8 @@ public class PdfView extends AppCompatActivity {
             lesson = intent.getStringExtra(LessonAdapter.EXTRA_LESSON);
             photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
         }
-        //String[] photos = intent.getStringArrayExtra(LessonAdapter.EXTRA_PHOTOS);
 
+        //determine the book the user is in and set title in toolbar accordingly
         if (book.equals("0")) {
             getSupportActionBar().setTitle("Good News Lesson " + lesson);
         }
@@ -57,6 +68,7 @@ public class PdfView extends AppCompatActivity {
             getSupportActionBar().setTitle("Book " + book + " Lesson " + lesson);
         }
 
+        //get pdfView from layout and set pdf to display
         pdfView = findViewById(R.id.pdfView);
         pdfView.fromAsset("book_" + book + ".pdf")
                 .pages(Integer.parseInt(lesson) + 3)
@@ -83,7 +95,8 @@ public class PdfView extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.action_picture:
-                //user chose the "about" item, open the about view
+                //user chose the "picture" item, open the ImageList activity
+                //pack extra data into intent for ImageList to use
                 intent.putExtra(EXTRA_BOOK, book);
                 intent.putExtra(EXTRA_PHOTOS, photos);
                 this.startActivity(intent);
