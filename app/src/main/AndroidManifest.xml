@@ -15,8 +15,6 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".SearchResult"></activity>
-        <activity android:name=".SearchBar" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask">
@@ -44,6 +42,14 @@
         <activity
             android:name=".ImageViewer"
             android:parentActivityName=".ImageList" />
+        <activity
+            android:name=".SearchBar"
+            android:launchMode="singleTask"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SearchResult"
+            android:launchMode="singleTask"
+            android:parentActivityName=".LessonView" />
     </application>
 
 </manifest>
