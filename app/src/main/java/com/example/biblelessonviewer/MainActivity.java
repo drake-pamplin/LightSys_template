@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         //book 2
         listItems.add(new RecyclerItem(
                 "Book 2",
-                "Mighty Men GOD",
+                "Mighty Men of GOD",
                 c.getResources().getDrawable(c.getResources().getIdentifier("book_2", "drawable", c.getPackageName())),
                 "2",
                 null,
@@ -157,8 +157,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent = new Intent(this, InfoView.class);
+        Intent search = new Intent(this, SearchBar.class);
 
         switch (item.getItemId()) {
+            case R.id.action_search:
+                // user tryna do a search
+                this.startActivity(search);
+                return true;
             case R.id.action_about:
                 //user chose the "about" item, open the about view
                 intent.putExtra(EXTRA_ITEM, "About");
@@ -176,5 +181,14 @@ public class MainActivity extends AppCompatActivity {
                 //Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    // make OS back button go to phone home page
+    public void onBackPressed(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 }
